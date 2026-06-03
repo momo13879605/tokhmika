@@ -1,0 +1,24 @@
+{
+    "auth": "xjomfjkpmcmtxisepahocjiwmqmfkbgi",
+    "private_key": "-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQDNTZGDG51cxcYAgtH6ZNBoLC8c3lnG/OPxwPV9iKIK8qZzvyV9\nO0+wLoXGDooQXdgIjzngCJvR0evA9G25BE6scZNtUQZ9gJ8/mQAKgBIXb5QDLzTk\nByLoG53iOv7M/Te3iOB6JAIMTNS8tlGtAbbi3AtKM6125FPwxjZ2Wj//pwIDAQAB\nAoGADW34icoBpjLtu9TS5X04wMe7ITlOSBz80DCeHmMUroCm8MVdL270zIKOj6Ed\n2Oo6mny7/XKytqvzrwCOON8WQkV85vvNK85qYSIueTOu5krdspb2TRE9vwrqBFlj\n1r1A8nBj4L+aFY3LvLfuaiMc+sbuZGqCZKbgGAxJ9E5PMmECQQDdf4g4jS4f+e6/\ngWddIiAlp0Va+Or3TZUhegQ+IUlNB3mqsksULbivHzm9gZZpnRZyoHX/GDY54A/C\nH8xVeC5xAkEA7Ug8tz94IMyEHJQcpeMg7KZemm+vR+rOAtrhEZNHycPvriZ45rIK\naYAYZlKuidJiqT4zZczHP5PFhiYJApnLlwJBALfg1a9M1MvK6r6kqLCSUemwUU1S\nc41WJMWjy73gWD/QQtrIJLfdtQH8hCykVb/bnvUN7KcW7H1jWvGnADS8DqECQCwm\nPrXR52Yi54nxvQrYoe2mXv/ZPAHjnIVHeI0unDLcdCIxIlm6UtmibefMBpG6RYU7\n/5A3c/NOaXg2Z4LGXu0CQFqc0MEAeCOaFWc3FQUTmLy8kFxzZ6p1cA4J670EeMvk\navNUNAVv0PbhFSYv+0Z+zG0T5dx/92UuJ99JHy3QUeo=\n-----END RSA PRIVATE KEY-----",
+    "user": {
+        "user_guid": "u0J4rSW0d57ac7d5917f8bd44cd197e2",
+        "first_name": "Mani",
+        "phone": "989307216494",
+        "username": "Mani_coder1",
+        "avatar_thumbnail": {
+            "file_id": "92263300479520",
+            "mime": "jpg",
+            "dc_id": "517",
+            "access_hash_rec": "4515209650921925331650072243822026040622"
+        },
+        "last_online": 1780200628,
+        "bio": "\u0628\u0647\u062a\u0631\u06cc\u0646 \u0686\u0646\u0644 \u0633\u0648\u0631\u0633\u06cc \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u0648 \u0631\u0648\u0628\u06cc\u06a9\u0627: @Source_donii1\n\u062c\u0648\u06cc\u0646 \u0634\u0648 \u06a9\u0647 \u0633\u0648\u0631\u0633 \u0647\u0627\u06cc \u0645\u062e\u062a\u0644\u0641 \u0631\u0648 \u0647\u0645\u0631\u0627\u0647 \u0641\u06cc\u0644\u0645\u0627\u06cc \u0627\u0645\u0648\u0632\u0634\u06cc \u0648 \u062f\u0648\u0631\u0647 \u0647\u0627\u06cc \u0645\u062e\u062a\u0644\u0641 \u0631\u0648 \u0627\u0632 \u062f\u0633\u062a \u0646\u062f\u06cc",
+        "is_deleted": false,
+        "is_verified": false,
+        "online_time": {
+            "type": "Exact",
+            "exact_time": 1780200628
+        }
+    }
+}
