@@ -61,40 +61,34 @@ def get_token():
     return token
 
 def setup_remote_with_token():
-    """تنظیم remote با توکن"""
+    """تنظیم remote با توکن (سازگار با git قدیمی)"""
     token = get_token()
-    
-    # آدرس کامل با توکن
     remote_url = f"https://momo13879605:{token}@github.com/momo13879605/tokhmika.git"
     
-    # چک کن ببینیم remote از قبل هست یا نه
+    # بررسی وجود remote origin با استفاده از git config (سازگار با همه نسخه‌ها)
     result = subprocess.run(
-        ["git", "remote", "get-url", "origin"],
+        ["git", "config", "--get", "remote.origin.url"],
         cwd=REPO_PATH,
         capture_output=True,
         text=True
     )
     
-    if result.returncode != 0:
-        # اگه remote وجود نداره، اضافه کن
+    if result.returncode == 0:
+        # origin وجود دارد، آدرس آن را به روز می‌کنیم
+        subprocess.run(
+            ["git", "remote", "set-url", "origin", remote_url],
+            cwd=REPO_PATH,
+            check=True
+        )
+        log("✅ Remote origin به‌روز شد.")
+    else:
+        # origin وجود ندارد، آن را اضافه می‌کنیم
         subprocess.run(
             ["git", "remote", "add", "origin", remote_url],
             cwd=REPO_PATH,
             check=True
         )
-        log("✅ Remote اضافه شد.")
-    else:
-        # اگه وجود داره، آدرسش رو عوض کن
-        current_url = result.stdout.strip()
-        if "momo13879605:" not in current_url:
-            subprocess.run(
-                ["git", "remote", "set-url", "origin", remote_url],
-                cwd=REPO_PATH,
-                check=True
-            )
-            log("✅ Remote آپدیت شد.")
-        else:
-            log("✅ Remote قبلاً تنظیم شده بود.")
+        log("✅ Remote origin اضافه شد.")
 
 def push_database():
     """انجام commit و push"""
