@@ -136,29 +136,23 @@ def main():
     log(f"📄 فایل مورد نظر: {DB_FILE}")
     log(f"⏱️ فاصله زمانی: هر {SLEEP_HOURS} ساعت یکبار")
     
-    # چک کن که آیا پروژه git هست یا نه
     git_dir = os.path.join(REPO_PATH, ".git")
     if not os.path.exists(git_dir):
         log("❌ خطا: این مسیر یک مخزن گیت نیست!")
         log("   اول باید با دستور 'git init' پروژه رو git کنی.")
         sys.exit(1)
     
-    # تنظیم remote با توکن (اولین بار توکن میگیره، دفعات بعد از فایل میخونه)
     setup_remote_with_token()
     
     log("🔄 سرویس در حال اجراست... (Ctrl+C برای توقف)")
+    wait_seconds = SLEEP_HOURS * 3600  # تعریف قبل از حلقه
     
-    # حلقه بی‌نهایت
     while True:
         try:
             log("📤 شروع پوش کردن فایل...")
             push_database()
-            
-            # چند ثانیه صبر کن بعد دوباره چک کن
-            wait_seconds = SLEEP_HOURS * 3600
             log(f"💤 {SLEEP_HOURS} ساعت صبر می‌کنم تا دوباره چک کنم...")
             time.sleep(wait_seconds)
-            
         except KeyboardInterrupt:
             log("🛑 دریافت سیگنال توقف. سرویس متوقف شد.")
             break
