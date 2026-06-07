@@ -91,9 +91,7 @@ def setup_remote_with_token():
         log("✅ Remote origin اضافه شد.")
 
 def push_database():
-    """انجام commit و push"""
     full_path = os.path.join(REPO_PATH, DB_FILE)
-    
     if not os.path.exists(full_path):
         log(f"⚠️ فایل {DB_FILE} وجود نداره!")
         return False
@@ -109,9 +107,13 @@ def push_database():
     commit_msg = f"Auto backup: {DB_FILE} at {datetime.now()}"
     result = subprocess.run(["git", "commit", "-m", commit_msg], cwd=REPO_PATH, capture_output=True, text=True)
     
-    # ترکیب stdout و stderr برای بررسی
-    output = (result.stdout + result.stderr).lower()
+    # برای دیباگ: خروجی کامل را چاپ کن
+    log(f"DEBUG: commit returncode={result.returncode}")
+    log(f"DEBUG: commit stdout='{result.stdout.strip()}'")
+    log(f"DEBUG: commit stderr='{result.stderr.strip()}'")
+    
     if result.returncode != 0:
+        output = (result.stdout + result.stderr).lower()
         if "nothing to commit" in output:
             log("📝 فایل تغییری نکرده بود. نیازی به push نیست.")
             return True
@@ -127,7 +129,7 @@ def push_database():
         log(f"❌ خطا در git push: {result.stderr}")
         return False
     
-    log("✅ git push انجام شد. فایل با موفقیت به گیت‌هاب رفت.")
+    log("✅ git push انجام شد.")
     return True
 
 def main():
