@@ -94,35 +94,25 @@ def push_database():
     """انجام commit و push"""
     full_path = os.path.join(REPO_PATH, DB_FILE)
     
-    # چک کن فایل وجود داره یا نه
     if not os.path.exists(full_path):
         log(f"⚠️ فایل {DB_FILE} وجود نداره!")
         return False
     
-    # مرحله 1: add
-    result = subprocess.run(
-        ["git", "add", DB_FILE],
-        cwd=REPO_PATH,
-        capture_output=True,
-        text=True
-    )
+    # git add
+    result = subprocess.run(["git", "add", DB_FILE], cwd=REPO_PATH, capture_output=True, text=True)
     if result.returncode != 0:
         log(f"❌ خطا در git add: {result.stderr}")
         return False
     log("✅ git add انجام شد.")
     
-    # مرحله 2: commit با پیام زماندار
+    # git commit
     commit_msg = f"Auto backup: {DB_FILE} at {datetime.now()}"
-    result = subprocess.run(
-        ["git", "commit", "-m", commit_msg],
-        cwd=REPO_PATH,
-        capture_output=True,
-        text=True
-    )
+    result = subprocess.run(["git", "commit", "-m", commit_msg], cwd=REPO_PATH, capture_output=True, text=True)
     
-    # اگه commit انجام نشد (یعنی فایل تغییری نداشته)
+    # ترکیب stdout و stderr برای بررسی
+    output = (result.stdout + result.stderr).lower()
     if result.returncode != 0:
-        if "nothing to commit" in result.stderr:
+        if "nothing to commit" in output:
             log("📝 فایل تغییری نکرده بود. نیازی به push نیست.")
             return True
         else:
@@ -131,14 +121,8 @@ def push_database():
     
     log("✅ git commit انجام شد.")
     
-    # مرحله 3: push
-    result = subprocess.run(
-        ["git", "push", "origin", "main"],
-        cwd=REPO_PATH,
-        capture_output=True,
-        text=True
-    )
-    
+    # git push
+    result = subprocess.run(["git", "push", "origin", "main"], cwd=REPO_PATH, capture_output=True, text=True)
     if result.returncode != 0:
         log(f"❌ خطا در git push: {result.stderr}")
         return False
